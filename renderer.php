@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Block advanced calculator is defined here.
+ * Block advanced calculator renderer is defined here.
  *
  * @package     block_advanced_calculator
  * @copyright   2024 Toni Jokinen <toni.o.jokinen@helsinki.fi>
@@ -23,46 +23,22 @@
  */
 
 /**
- * Advanced calculator block.
+ * Advanced calculator block renderer.
  *
  * @package    block_advanced_calculator
  * @copyright  2024 Toni Jokinen
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class block_advanced_calculator extends block_base {
-
-    /**
-     * Initialize the block.
-     */
-    public function init() {
-        $this->title = get_string('pluginname', 'block_advanced_calculator');
-    }
-
-    /**
-     * Return the content of the block.
-     *
-     * @return stdClass|null
-     */
-    public function get_content() {
-        if ($this->content !== null) {
-            return $this->content;
-        }
-
-        $this->content = new stdClass();
-        $this->content->text = $this->render_calculator();
-        $this->content->footer = '';
-
-        return $this->content;
-    }
+class block_advanced_calculator_renderer extends plugin_renderer_base {
 
     /**
      * Render the calculator template.
      *
-     * @return string
+     * @param stdClass $data Data to pass to the template.
+     * @return string HTML output.
      */
-    private function render_calculator() {
-        $renderer = $this->page->get_renderer('block_advanced_calculator');
-        $data = new stdClass(); // Any data you want to pass to the template.
-        return $renderer->render_calculator($data);
+    public function render_calculator($data) {
+        return $this->render_from_template('block_advanced_calculator/calculator', $data);
     }
 }
+
