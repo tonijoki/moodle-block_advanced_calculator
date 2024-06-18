@@ -15,20 +15,13 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Block advanced calculator renderer is defined here.
- *
- * @package     block_advanced_calculator
- * @copyright   2024 Toni Jokinen <toni.o.jokinen@helsinki.fi>
- * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
-
-/**
- * Advanced calculator block renderer.
+ * Advanced calculator block.
  *
  * @package    block_advanced_calculator
- * @copyright  2024 Toni Jokinen
+ * @copyright  2024 Toni Jokinen <toni.o.jokinen@helsinki.fi>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
 class block_advanced_calculator_renderer extends plugin_renderer_base {
 
     /**

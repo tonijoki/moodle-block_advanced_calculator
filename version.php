@@ -15,14 +15,14 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Block advanced calculator is defined here.
+ * Advanced calculator block.
  *
- * @package     block_advanced_calculator
- * @copyright   2024 Toni Jokinen <toni.o.jokinen@helsinki.fi>
- * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    block_advanced_calculator
+ * @copyright  2024 Toni Jokinen <toni.o.jokinen@helsinki.fi>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$plugin->version   = 2024061800;    // The current plugin version (Date: YYYYMMDDXX).
+$plugin->version   = 2024061801;    // The current plugin version (Date: YYYYMMDDXX).
 $plugin->requires  = 2018051700;    // Requires this Moodle version.
 $plugin->component = 'block_advanced_calculator'; // Full name of the plugin (used for diagnostics).
 $plugin->maturity  = MATURITY_STABLE;

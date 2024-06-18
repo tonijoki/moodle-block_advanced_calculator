@@ -15,13 +15,12 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Block advanced calculator is defined here.
+ * Advanced calculator block.
  *
- * @package     block_advanced_calculator
- * @copyright   2024 Toni Jokinen <toni.o.jokinen@helsinki.fi>
- * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    block_advanced_calculator
+ * @copyright  2024 Toni Jokinen <toni.o.jokinen@helsinki.fi>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 
 $string['pluginname'] = 'Advanced Calculator';
 $string['advanced_calculator:addinstance'] = 'Add a new advanced calculator block';
