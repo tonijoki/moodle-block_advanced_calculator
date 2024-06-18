@@ -1,5 +1,5 @@
 <?php
-// This file is part of Moodle - https://moodle.org/
+// This file is part of Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -11,8 +11,8 @@
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 //
-// You should have received a copy of the GNU General Public License along with
-// Moodle.  If not, see <https://www.gnu.org/licenses/>.
+// You should have received a copy of the GNU General Public License
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
  * Block advanced calculator is defined here.
@@ -24,23 +24,24 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$capabilities = array(
-    'block/testcalc:addinstance' => array(
+$capabilities = [
+    'block/testcalc:addinstance' => [
         'captype' => 'write',
         'contextlevel' => CONTEXT_BLOCK,
-        'archetypes' => array(
-            'user' => CAP_ALLOW,
-        ),
-        'clonepermissionsfrom' => 'moodle/site:manageblocks'
-    ),
-
-    'block/testcalc:myaddinstance' => array(
+        'archetypes' => [
+            'teacher' => CAP_ALLOW,
+            'editingteacher' => CAP_ALLOW,
+            'manager' => CAP_ALLOW,
+        ],
+        'clonepermissionsfrom' => 'moodle/site:manageblocks',
+    ],
+    'block/testcalc:myaddinstance' => [
         'captype' => 'write',
-        'contextlevel' => CONTEXT_SYSTEM,
-        'archetypes' => array(
+        'contextlevel' => CONTEXT_BLOCK,
+        'archetypes' => [
             'user' => CAP_ALLOW,
-        ),
-        'clonepermissionsfrom' => 'moodle/my:manageblocks'
-    ),
-);
+        ],
+        'clonepermissionsfrom' => 'moodle/my:manageblocks',
+    ],
+];
 
