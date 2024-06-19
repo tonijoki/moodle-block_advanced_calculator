@@ -58,4 +58,28 @@ class block_advanced_calculator extends block_base {
         $data = new stdClass(); // Any data you want to pass to the template.
         return $renderer->render_calculator($data);
     }
+
+    /**
+     * Allow multiple instances of the block.
+     *
+     * @return bool
+     */
+    public function instance_allow_multiple() {
+        return true;
+    }
+
+    /**
+     * Where the block can be added.
+     *
+     * @return array
+     */
+    public function applicable_formats() {
+        return array(
+            'course-view' => true,
+            'mod-quiz' => true, // Ensure the block is allowed in quiz context
+            'site-index' => true,
+            'my' => true
+        );
+    }
 }
+
