@@ -22,7 +22,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$plugin->version   = 2024061801;    // The current plugin version (Date: YYYYMMDDXX).
+$plugin->version   = 2024061900;    // The current plugin version (Date: YYYYMMDDXX).
 $plugin->requires  = 2018051700;    // Requires this Moodle version.
 $plugin->component = 'block_advanced_calculator'; // Full name of the plugin (used for diagnostics).
 $plugin->maturity  = MATURITY_STABLE;
