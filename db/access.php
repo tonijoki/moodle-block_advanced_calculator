@@ -25,7 +25,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $capabilities = [
-    'block/testcalc:addinstance' => [
+    'block/advanced_calculator:addinstance' => [
         'captype' => 'write',
         'contextlevel' => CONTEXT_BLOCK,
         'archetypes' => [
@@ -35,7 +35,7 @@ $capabilities = [
         ],
         'clonepermissionsfrom' => 'moodle/site:manageblocks',
     ],
-    'block/testcalc:myaddinstance' => [
+    'block/advanced_calculator:myaddinstance' => [
         'captype' => 'write',
         'contextlevel' => CONTEXT_BLOCK,
         'archetypes' => [
