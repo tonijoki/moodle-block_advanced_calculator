@@ -21,7 +21,6 @@
  * @copyright  2024 Toni Jokinen <toni.o.jokinen@helsinki.fi>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 class block_advanced_calculator extends block_base {
 
     /**
@@ -76,7 +75,7 @@ class block_advanced_calculator extends block_base {
     public function applicable_formats() {
         return array(
             'course-view' => true,
-            'mod-quiz' => true, // Ensure the block is allowed in quiz context
+            'mod-quiz' => true,
             'site-index' => true,
             'my' => true
         );

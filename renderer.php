@@ -21,7 +21,6 @@
  * @copyright  2024 Toni Jokinen <toni.o.jokinen@helsinki.fi>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 class block_advanced_calculator_renderer extends plugin_renderer_base {
 
     /**
