@@ -24,24 +24,25 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$capabilities = array(
+$capabilities = [
 
-    'block/advanced_calculator:addinstance' => array(
+    'block/advanced_calculator:addinstance' => [
         'captype' => 'write',
         'contextlevel' => CONTEXT_SYSTEM,
-        'archetypes' => array(
-            'user' => CAP_ALLOW
-        ),
+        'archetypes' => [
+            'user' => CAP_ALLOW,
+        ],
 
-        'clonepermissionsfrom' => 'moodle/my:manageblocks'
-    ),
-    'block/advanced_calculator:myaddinstance' => array(
+        'clonepermissionsfrom' => 'moodle/my:manageblocks',
+    ],
+    'block/advanced_calculator:myaddinstance' => [
         'captype' => 'write',
         'contextlevel' => CONTEXT_SYSTEM,
-        'archetypes' => array(
-            'user' => CAP_ALLOW
-        ),
+        'archetypes' => [
+            'user' => CAP_ALLOW,
+        ],
 
-        'clonepermissionsfrom' => 'moodle/my:manageblocks'
-    ),
-);
+        'clonepermissionsfrom' => 'moodle/my:manageblocks',
+    ],
+];
+

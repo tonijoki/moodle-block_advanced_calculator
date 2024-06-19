@@ -73,12 +73,12 @@ class block_advanced_calculator extends block_base {
      * @return array
      */
     public function applicable_formats() {
-        return array(
+        return [
             'course-view' => true,
             'mod-quiz' => true,
             'site-index' => true,
-            'my' => true
-        );
+            'my' => true,
+        ];
     }
 }
 
