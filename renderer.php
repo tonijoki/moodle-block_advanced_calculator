@@ -33,5 +33,4 @@ class block_advanced_calculator_renderer extends plugin_renderer_base {
         return $this->render_from_template('block_advanced_calculator/calculator', $data);
     }
 }
-?>
 

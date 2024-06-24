@@ -20,7 +20,7 @@
         font-size: 20px;
     }
 </style>
-<form name="calculator" class="calc-container">
+<form name="calculator" class="calc-container" onsubmit="return false;">
     <input type="text" id="result" class="calc-input" readonly>
     <input type="button" class="calc-button" value="C" onclick="document.calculator.result.value=''">
     <input type="button" class="calc-button" value="/" onclick="document.calculator.result.value+=' / '">
@@ -44,15 +44,20 @@
 <script>
     function calculate(expression) {
         try {
-            return eval(expression.replace(/[^-()\d/*+.]/g, ''));
+            // Validate expression to avoid security issues with eval
+            if (/[^-()\d/*+.]/.test(expression)) {
+                return 'Error';
+            }
+            return eval(expression);
         } catch (e) {
             return 'Error';
         }
     }
 
-    document.addEventListener('keydown', function(event) {
-        const key = event.key; // "0", "1", "2", "3", "+", "-", etc.
-        const calculatorScreen = document.getElementById('result');
+    document.getElementById('result').addEventListener('keydown', function(event) {
+        event.preventDefault();  // Prevent default action to avoid conflicts with page input
+        const key = event.key;
+        const calculatorScreen = event.target;
 
         if (!isNaN(key) || ['+', '-', '*', '/'].includes(key)) {
             calculatorScreen.value += key;
@@ -60,9 +65,12 @@
             calculatorScreen.value = calculate(calculatorScreen.value);
         } else if (key === 'Backspace') {
             calculatorScreen.value = calculatorScreen.value.slice(0, -1);
-        } else if (key === 'c' || key === 'C') {
+        } else if (key.toLowerCase() === 'c') {
             calculatorScreen.value = '';
         }
     });
+
+    // Ensure the calculator input is focused for keyboard input
+    document.getElementById('result').focus();
 </script>
 
