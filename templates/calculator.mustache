@@ -22,32 +22,50 @@
 </style>
 <form name="calculator" class="calc-container" onsubmit="return false;">
     <input type="text" id="calculator_input" class="calc-input" readonly>
-    <input type="button" class="calc-button" value="C" onclick="document.calculator.calculator_input.value=''">
-    <input type="button" class="calc-button" value="/" onclick="document.calculator.calculator_input.value+=' / '">
-    <input type="button" class="calc-button" value="*" onclick="document.calculator.calculator_input.value+=' * '">
-    <input type="button" class="calc-button" value="-" onclick="document.calculator.calculator_input.value+=' - '">
-    <input type="button" class="calc-button" value="7" onclick="document.calculator.calculator_input.value+='7'">
-    <input type="button" class="calc-button" value="8" onclick="document.calculator.calculator_input.value+='8'">
-    <input type="button" class="calc-button" value="9" onclick="document.calculator.calculator_input.value+='9'">
-    <input type="button" class="calc-button" value="+" onclick="document.calculator.calculator_input.value+=' + '">
-    <input type="button" class="calc-button" value="4" onclick="document.calculator.calculator_input.value+='4'">
-    <input type="button" class="calc-button" value="5" onclick="document.calculator.calculator_input.value+='5'">
-    <input type="button" class="calc-button" value="6" onclick="document.calculator.calculator_input.value+='6'">
-    <input type="button" class="calc-button" value="." onclick="document.calculator.calculator_input.value+='.'">
-    <input type="button" class="calc-button" value="1" onclick="document.calculator.calculator_input.value+='1'">
-    <input type="button" class="calc-button" value="2" onclick="document.calculator.calculator_input.value+='2'">
-    <input type="button" class="calc-button" value="3" onclick="document.calculator.calculator_input.value+='3'">
-    <input type="button" class="calc-button" value="=" onclick="document.calculator.calculator_input.value=calculate(document.calculator.calculator_input.value)">
-    <input type="button" class="calc-button" value="0" onclick="document.calculator.calculator_input.value+='0'">
-    <input type="button" class="calc-button" value="DEL" onclick="document.calculator.calculator_input.value = document.calculator.calculator_input.value.slice(0, -1)">
+    <input type="button" class="calc-button" value="C" onclick="clearInput()">
+    <input type="button" class="calc-button" value="/" onclick="appendToInput(' / ')">
+    <input type="button" class="calc-button" value="*" onclick="appendToInput(' * ')">
+    <input type="button" class="calc-button" value="-" onclick="appendToInput(' - ')">
+    <input type="button" class="calc-button" value="7" onclick="appendToInput('7')">
+    <input type="button" class="calc-button" value="8" onclick="appendToInput('8')">
+    <input type="button" class="calc-button" value="9" onclick="appendToInput('9')">
+    <input type="button" class="calc-button" value="+" onclick="appendToInput(' + ')">
+    <input type="button" class="calc-button" value="4" onclick="appendToInput('4')">
+    <input type="button" class="calc-button" value="5" onclick="appendToInput('5')">
+    <input type="button" class="calc-button" value="6" onclick="appendToInput('6')">
+    <input type="button" class="calc-button" value="." onclick="appendToInput('.')">
+    <input type="button" class="calc-button" value="1" onclick="appendToInput('1')">
+    <input type="button" class="calc-button" value="2" onclick="appendToInput('2')">
+    <input type="button" class="calc-button" value="3" onclick="appendToInput('3')">
+    <input type="button" class="calc-button" value="=" onclick="evaluateExpression()">
+    <input type="button" class="calc-button" value="0" onclick="appendToInput('0')">
+    <input type="button" class="calc-button" value="DEL" onclick="deleteLastChar()">
 </form>
 <script>
+    function clearInput() {
+        document.getElementById('calculator_input').value = '';
+    }
+
+    function appendToInput(value) {
+        document.getElementById('calculator_input').value += value;
+    }
+
+    function deleteLastChar() {
+        const input = document.getElementById('calculator_input');
+        input.value = input.value.slice(0, -1);
+    }
+
+    function evaluateExpression() {
+        const input = document.getElementById('calculator_input').value;
+        document.getElementById('calculator_input').value = calculate(input);
+    }
+
     function calculate(expression) {
         try {
-            // Replace comma with dot for decimal handling
+            // Replace comma with dot for decimal handling.
             expression = expression.replace(/,/g, '.');
-            // Validate expression to avoid security issues with eval
-            if (/[^-()\d/*+.]/.test(expression)) {
+            // Validate expression to avoid security issues with eval.
+            if (/[^-()\d/*+. ]/.test(expression)) {
                 return 'Error';
             }
             return eval(expression);
@@ -57,12 +75,14 @@
     }
 
     document.getElementById('calculator_input').addEventListener('keydown', function(event) {
-        event.preventDefault();  // Prevent default action to avoid conflicts with page input
+        event.preventDefault();  // Prevent default action to avoid conflicts with page input.
         const key = event.key;
         const calculatorScreen = event.target;
 
-        if (!isNaN(key) || ['+', '-', '*', '/'].includes(key)) {
+        if (!isNaN(key)) {
             calculatorScreen.value += key;
+        } else if (['+', '-', '*', '/'].includes(key)) {
+            calculatorScreen.value += ` ${key} `;
         } else if (key === 'Enter') {
             calculatorScreen.value = calculate(calculatorScreen.value);
         } else if (key === 'Backspace') {
@@ -80,7 +100,7 @@
         }
     });
 
-    // Ensure the calculator input is focused for keyboard input
+    // Ensure the calculator input is focused for keyboard input.
     document.getElementById('calculator_input').focus();
 </script>
 
