@@ -30,7 +30,18 @@ class block_advanced_calculator_renderer extends plugin_renderer_base {
      * @return string HTML output.
      */
     public function render_calculator($data) {
+        $data->formatted_number = $this->format_number($data->number); // Assuming $data->number holds the value
         return $this->render_from_template('block_advanced_calculator/calculator', $data);
+    }
+
+    /**
+     * Format a number with spaces every three digits.
+     *
+     * @param int $number The number to format.
+     * @return string The formatted number.
+     */
+    private function format_number($number) {
+        return number_format($number, 0, '.', ' ');
     }
 }
 
