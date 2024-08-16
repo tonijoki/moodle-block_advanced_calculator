@@ -31,54 +31,39 @@ class block_advanced_calculator extends block_base {
     }
 
     /**
-     * Return the content of the block.
+     * Get the content of the block.
      *
-     * @return stdClass|null
+     * @return stdClass The block content.
      */
     public function get_content() {
+        global $OUTPUT;
+
         if ($this->content !== null) {
             return $this->content;
         }
 
         $this->content = new stdClass();
-        $this->content->text = $this->render_calculator();
-        $this->content->footer = '';
+
+        // Initialize the data object.
+        $data = new stdClass();
+
+        // You would typically fetch or calculate this number based on your application's logic.
+        $data->number = 50000; // Example static number, replace with actual logic.
+
+        // Render the calculator with the populated data.
+        $renderer = $this->page->get_renderer('block_advanced_calculator');
+        $this->content->text = $renderer->render_calculator($data);
 
         return $this->content;
     }
 
     /**
-     * Render the calculator template.
+     * Define applicable formats for the block.
      *
-     * @return string
-     */
-    private function render_calculator() {
-        $renderer = $this->page->get_renderer('block_advanced_calculator');
-        $data = new stdClass(); // Any data you want to pass to the template.
-        return $renderer->render_calculator($data);
-    }
-
-    /**
-     * Allow multiple instances of the block.
-     *
-     * @return bool
-     */
-    public function instance_allow_multiple() {
-        return true;
-    }
-
-    /**
-     * Where the block can be added.
-     *
-     * @return array
+     * @return array The applicable formats.
      */
     public function applicable_formats() {
-        return [
-            'course-view' => true,
-            'mod-quiz' => true,
-            'site-index' => true,
-            'my' => true,
-        ];
+        return ['all' => true];
     }
 }
 

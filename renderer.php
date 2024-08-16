@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Advanced calculator block.
+ * Advanced calculator renderer.
  *
  * @package    block_advanced_calculator
  * @copyright  2024 Toni Jokinen <toni.o.jokinen@helsinki.fi>
@@ -30,7 +30,14 @@ class block_advanced_calculator_renderer extends plugin_renderer_base {
      * @return string HTML output.
      */
     public function render_calculator($data) {
-        $data->formatted_number = $this->format_number($data->number); // Assuming $data->number holds the value
+        // Check if the 'number' property is set and is numeric.
+        if (isset($data->number) && is_numeric($data->number)) {
+            $data->formatted_number = $this->format_number($data->number);
+        } else {
+            // Handle cases where 'number' is not set or is not numeric.
+            $data->formatted_number = 'N/A'; // You can choose an appropriate fallback here.
+        }
+
         return $this->render_from_template('block_advanced_calculator/calculator', $data);
     }
 
