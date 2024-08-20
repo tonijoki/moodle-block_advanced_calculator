@@ -44,11 +44,8 @@ class block_advanced_calculator extends block_base {
 
         $this->content = new stdClass();
 
-        // Initialize the data object.
+        // Prepare data for rendering.
         $data = new stdClass();
-
-        // You would typically fetch or calculate this number based on your application's logic.
-        $data->number = 50000; // Example static number, replace with actual logic.
 
         // Render the calculator with the populated data.
         $renderer = $this->page->get_renderer('block_advanced_calculator');
